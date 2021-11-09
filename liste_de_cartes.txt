@@ -1,0 +1,6 @@
+start,end,type,seat,gate,number,addtional,
+gérone,lille,avion,2A,12,EJ23234,Les bagages seront automatiquement transférés à votre dernière étape,
+paris,stockholm,avion,3A,45B,SK455,Déposer des bagages au guichet 344,
+madrid,barcelone,train,45B,,78A,,
+barcelone,paris,train,,,78A,,
+stockholm,aéroport de gérone,bus,,,,,
