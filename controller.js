@@ -17,14 +17,16 @@ exports.stringToArray = (string, separator) => {
 exports.toString = (objectModel) => {
     if (objectModel.type === "train") {
         return `🚃 Prenez le train ${objectModel.number} de ${objectModel.start} à ${objectModel.end}. `
-            + (!!objectModel.start ? `Asseyez-vous à la place ${objectModel.start}` : "Pas d'attribution de siège")
-            + objectModel.addtional;
+            + (!!objectModel.seat ? `Asseyez-vous à la place ${objectModel.seat}` : "Pas d'attribution de siège")
+            + (!!objectModel.addtional ? objectModel.addtional : '');
     } else if (objectModel.type === "bus") {
         return `🚌 Prenez le bus de ${objectModel.start} à ${objectModel.end}. ` 
-            + (!!objectModel.start ? `Asseyez-vous à la place ${objectModel.start}` : "Pas d'attribution de siège")
-            + objectModel.addtional
+            + (!!objectModel.seat ? `Asseyez-vous à la place ${objectModel.seat}` : "Pas d'attribution de siège")
+            +  (!!objectModel.addtional ? objectModel.addtional : '');
     } else if (objectModel.type === "avion") {
-        return `🛫 De l'aéroport de ${objectModel.start}, renez le vol ${objectModel.number} à destination de ${objectModel.end}. Porte ${objectModel.gate}, siège ${objectModel.seat}. ` + objectModel.addtional;
+        return `🛫 De l'aéroport de ${objectModel.start}, prenez le vol ${objectModel.number} à destination de ${objectModel.end}. Porte ${objectModel.gate}, `
+        +  (!!objectModel.seat ? `siège ${objectModel.seat}. ` : "Pas d'attribution de siège. ")
+        +  (!!objectModel.addtional ? objectModel.addtional : '');
     }
 }
 
