@@ -22,11 +22,11 @@ exports.toString = (objectModel) => {
     } else if (objectModel.type === "bus") {
         return `🚌 Prenez le bus de ${objectModel.start} à ${objectModel.end}. ` 
             + (!!objectModel.seat ? `Asseyez-vous à la place ${objectModel.seat}` : "Pas d'attribution de siège")
-            +  (!!objectModel.addtional ? objectModel.addtional : '');
+            + (!!objectModel.addtional ? objectModel.addtional : '');
     } else if (objectModel.type === "avion") {
         return `🛫 De l'aéroport de ${objectModel.start}, prenez le vol ${objectModel.number} à destination de ${objectModel.end}. Porte ${objectModel.gate}, `
-        +  (!!objectModel.seat ? `siège ${objectModel.seat}. ` : "Pas d'attribution de siège. ")
-        +  (!!objectModel.addtional ? objectModel.addtional : '');
+            +  (!!objectModel.seat ? `siège ${objectModel.seat}. ` : "Pas d'attribution de siège. ")
+            +  (!!objectModel.addtional ? objectModel.addtional : '');
     }
 }
 
