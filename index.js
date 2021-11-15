@@ -15,7 +15,7 @@ allTickets = [];      //list of event
 
 //LOGIQUE -----------------------------------------------------------------------------------------------------
 
-intiProject = () => {
+const intiProject = () => {
     try {
         const data = fs.readFileSync(config.filePath, 'UTF-8');
         const lines = data.split(/\r?\n/);
@@ -34,7 +34,7 @@ intiProject = () => {
     }
 };
 
-createRoad = (starter) => {
+const createRoad = (starter) => {
     if (starter === false) {
         for (let i = 0; i < allTickets.length; i++) {
             let hasParent = false;
@@ -63,7 +63,7 @@ createRoad = (starter) => {
     }
 }
 
-main = () => {
+const main = () => {
     console.log("🏴‍☠️ -----Votre voyage avec M&J travel----- 🏴‍☠️")
 
 
