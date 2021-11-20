@@ -13,7 +13,7 @@ let myObj = {
 
 // UNIT TEST -----------------------------------------------------------------------------------------------------
 
-test('Object creation: ', () => {
+test('🧪 Object creation: ', () => {
     expect(controller.createObject(myObj).debug)
         .toStrictEqual({
             end: 'lille',
@@ -25,12 +25,12 @@ test('Object creation: ', () => {
         });
 })
 
-test('Object creation: ', () => {
+test('🧪 Object travel getter: ', () => {
     expect(controller.createObject(myObj).travel)
         .toStrictEqual(`🛫 De l'aéroport de gérone, prenez le vol EJ23234 à destination de lille. Porte 12, siège 2A. Les bagages seront automatiquement transférés à votre dernière étape`);
 })
 
-test('Object creation: ', () => {
+test('🧪 Object start place getter: ', () => {
     expect(controller.createObject(myObj).getStart)
         .toStrictEqual("gérone");
 })
