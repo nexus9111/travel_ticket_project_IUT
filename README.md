@@ -31,7 +31,7 @@ La liste doit être définie dans un format compatible avec le format d'entrée.
 
 ![Retranscription Carbon 1](./images/setup.png)
 
-### 📍 Example of use with given example
+### 📍 Example of use
 
 ![Retranscription Carbon 1](./images/exemple.png)
 
