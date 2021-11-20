@@ -1,47 +1,111 @@
-let infoModel = {     //define structure model
-    'start': null,
-    'end': null,
-    'type': null,
-    'seat': null,
-    'gate': null,
-    'number': null,
-    'addtional': null
+// CLASSES -----------------------------------------------------------------------------------------------------
+
+
+class travelMethode {
+    constructor(start, end, addtional) {
+        this.start = start;
+        this.end = end;
+        this.addtional = addtional || null;
+    }
+
+    get debug() {
+        return {
+            start: this.start || null, 
+            end: this.end || null,
+            seat: this.seat || null,
+            gate: this.gate || null,  
+            number: this.number || null,
+            addtional: this.addtional || null
+        }
+    }
+
+    get travel() {
+        return this.toStringTravel || "Unknown travel methode"
+    }
+
+    get getStart() {
+        return this.start;
+    }
+
+    get getEnd() {
+        return this.end;
+    }
+}
+
+class Plane extends travelMethode {
+    constructor(start, end, seat, gate, number, addtional) {
+        super(start, end, addtional);
+        this.gate = gate;
+        this.number = number;
+        this.seat = seat;
+        this.toStringTravel = `🛫 De l'aéroport de ${this.start}, prenez le vol ${this.number} à destination de ${this.end}. Porte ${this.gate}, `
+            +  (!!this.seat ? `siège ${this.seat}. ` : "Pas d'attribution de siège. ")
+            +  (!!this.addtional ? this.addtional : '');
+    }
+}
+
+class Train extends travelMethode {
+    constructor(start, end, seat, gate, number, addtional) {
+        super(start, end, addtional);
+        this.gate = gate;
+        this.number = number;
+        this.seat = seat;
+        this.toStringTravel = `🚃 Prenez le train ${this.number} de l'${this.start} à l'${this.end}. `
+            + (!!this.seat ? `Asseyez-vous à la place ${this.seat}` : "Pas d'attribution de siège")
+            + (!!this.addtional ? this.addtional : '');
+        }
+}
+
+class Bus extends travelMethode {
+    constructor(start, end, seat, gate, number, addtional) {
+        super(start, end, addtional);
+        this.gate = gate;
+        this.number = number;
+        this.seat = seat;
+        this.toStringTravel = `🚌 Prenez le bus de ${this.start} à ${this.end}. ` 
+            + (!!this.seat ? `Asseyez-vous à la place ${this.seat}` : "Pas d'attribution de siège")
+            + (!!this.addtional ? this.addtional : '');
+    }
 }
 
 // METHODES -----------------------------------------------------------------------------------------------------
 
-exports.stringToArray = (string, separator) => {
-    return string.split(separator);
-}
-
-exports.toString = (objectModel) => {
-    if (objectModel.type === "train") {
-        return `🚃 Prenez le train ${objectModel.number} de ${objectModel.start} à ${objectModel.end}. `
-            + (!!objectModel.seat ? `Asseyez-vous à la place ${objectModel.seat}` : "Pas d'attribution de siège")
-            + (!!objectModel.addtional ? objectModel.addtional : '');
-    } else if (objectModel.type === "bus") {
-        return `🚌 Prenez le bus de ${objectModel.start} à ${objectModel.end}. ` 
-            + (!!objectModel.seat ? `Asseyez-vous à la place ${objectModel.seat}` : "Pas d'attribution de siège")
-            + (!!objectModel.addtional ? objectModel.addtional : '');
-    } else if (objectModel.type === "avion") {
-        return `🛫 De l'aéroport de ${objectModel.start}, prenez le vol ${objectModel.number} à destination de ${objectModel.end}. Porte ${objectModel.gate}, `
-            +  (!!objectModel.seat ? `siège ${objectModel.seat}. ` : "Pas d'attribution de siège. ")
-            +  (!!objectModel.addtional ? objectModel.addtional : '');
+const createObject = (jsonObj) => {
+    switch (jsonObj.type) {
+        case "avion":
+            return new Plane(
+                jsonObj.start,
+                jsonObj.end,
+                jsonObj.seat,
+                jsonObj.gate,
+                jsonObj.number,
+                jsonObj.addtional
+            )
+        case "bus":
+            return new Bus(
+                jsonObj.start,
+                jsonObj.end,
+                jsonObj.seat,
+                jsonObj.gate,
+                jsonObj.number,
+                jsonObj.addtional
+            )
+        case "train":
+            return new Train(
+                jsonObj.start,
+                jsonObj.end,
+                jsonObj.seat,
+                jsonObj.gate,
+                jsonObj.number,
+                jsonObj.addtional
+            )
     }
 }
 
-exports.createObjectFromArray = (arrayToTransform) => {
-    try {
-        let ticket = Object.assign({}, infoModel);
-        ticket.start = arrayToTransform[0] || null;
-        ticket.end = arrayToTransform[1] || null;
-        ticket.type = arrayToTransform[2] || null;
-        ticket.seat = arrayToTransform[3] || null;
-        ticket.gate = arrayToTransform[4] || null;
-        ticket.number = arrayToTransform[5] || null;
-        ticket.addtional = arrayToTransform[6] || null;
-        return ticket;
-    } catch (err) {
-        console.log("❌ invalid ticket format: " + err)
-    }  
-}
+// EXPORTS CLASS
+module.exports.Plane = Plane;
+module.exports.Train = Train;
+module.exports.Bus = Bus;
+
+// EXPORT FUNC
+module.exports.createObject = createObject;

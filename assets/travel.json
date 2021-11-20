@@ -1,0 +1,38 @@
+[
+    {
+        "type": "avion",
+        "start": "Stockholm",
+        "end": "New York JFK",
+        "seat": "7B",
+        "gate": "22",
+        "number": "SK22",
+        "addtional": "Les bagages seront automatiquement transférés de votre dernière étape"
+    },
+    {
+        "type": "bus",
+        "start": "aéroport de Barcelone",
+        "end": "aéroport de Gérone",
+        "seat": null,
+        "gate": null,
+        "number": null,
+        "addtional": null
+    },
+    {
+        "type": "avion",
+        "start": "gérone",
+        "end": "Stockholm",
+        "seat": "3A",
+        "gate": "45B",
+        "number": "SK455",
+        "addtional": "Dépose des bagages au guichet 344"
+    },
+    {
+        "type": "train",
+        "start": "Madrid",
+        "end": "Barcelone",
+        "seat": "45B",
+        "gate": null,
+        "number": "78A",
+        "addtional": null
+    }
+]
