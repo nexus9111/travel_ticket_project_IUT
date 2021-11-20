@@ -37,7 +37,8 @@ La liste doit être définie dans un format compatible avec le format d'entrée.
 
 ### 📐 Unite test
 
-![Retranscription Carbon 1](./images/test.png)
+#### $> npm install --save-dev jest
+#### $> npm run test
 
 ### License
 
