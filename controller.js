@@ -1,7 +1,7 @@
 // CLASSES -----------------------------------------------------------------------------------------------------
 
 
-class travelMethode {
+class Transport {
     constructor(start, end, addtional) {
         this.start = start;
         this.end = end;
@@ -32,7 +32,7 @@ class travelMethode {
     }
 }
 
-class Plane extends travelMethode {
+class Plane extends Transport {
     constructor(start, end, seat, gate, number, addtional) {
         super(start, end, addtional);
         this.gate = gate;
@@ -44,7 +44,7 @@ class Plane extends travelMethode {
     }
 }
 
-class Train extends travelMethode {
+class Train extends Transport {
     constructor(start, end, seat, gate, number, addtional) {
         super(start, end, addtional);
         this.gate = gate;
@@ -56,7 +56,7 @@ class Train extends travelMethode {
         }
 }
 
-class Bus extends travelMethode {
+class Bus extends Transport {
     constructor(start, end, seat, gate, number, addtional) {
         super(start, end, addtional);
         this.gate = gate;
